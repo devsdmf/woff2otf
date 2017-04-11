@@ -87,24 +87,3 @@ def convert(infilename, outfilename):
     with open(infilename , mode='rb') as infile:
         with open(outfilename, mode='wb') as outfile:
             convert_streams(infile, outfile)
-
-
-def main(argv):
-    if len(argv) == 1 or len(argv) > 3:
-        print('I convert *.woff files to *.otf files. (one at a time :)\n'
-              'Usage: woff2otf.py web_font.woff [converted_filename.otf]\n'
-              'If the target file name is ommited, it will be guessed. Have fun!\n')
-        return
-
-    source_file_name  = argv[1]
-    if len(argv) == 3:
-        target_file_name = argv[2]
-    else:
-        target_file_name = source_file_name.split('.')[0] + '.otf'
-
-    convert(source_file_name, target_file_name)
-    return 0
-
-
-if __name__ == '__main__':
-    sys.exit(main(sys.argv))
